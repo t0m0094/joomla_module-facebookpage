@@ -1,18 +1,43 @@
 <?php
 /**
- * Facebook Page module
- * 
- * @package    ArnsMedia.facebookpage
- * @subpackage Modules
- * @license    GNU General Public License version 3 or later; see LICENSE
+ * @package     ArnsMedia.facebook
+ * @subpackage  mod_facebookpage
+ *
+ * @copyright   (C) 2021 Arns Media
+ * @license     GNU General Public License version 3 or later; see LICENSE.txt
  */
- 
- // No direct access
-defined('_JEXEC') or die;
 
-class ModFacebookpageHelper {
+namespace Joomla\Module\FacebookPage\Site\Helper;
 
-	public static function getFBPage($params) {
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Access\Access;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
+use Joomla\Component\Content\Site\Helper\RouteHelper;
+
+/**
+ * Helper for mod_facebookpage
+ *
+ * @since  1.0
+ */
+abstract class FacebookPageHelper
+{
+	/**
+	 * Get the facebook page html markup
+	 *
+	 * @param   \Joomla\Registry\Registry  &$params  object holding the models parameters
+	 *
+	 * @return  mixed
+	 *
+	 * @since 1.0
+	 */
+	public static function getFacebookPage(&$params)
+	{
 		//Params
 		$href = $params->get('href','https://www.facebook.com/facebook');
 		$pagename = $params->get('pagename', 'Facebook');
@@ -31,7 +56,7 @@ class ModFacebookpageHelper {
 		$adapt_width = $params->get('adapt_width','true');
 
 		//Plugin code
-		$fbpageredered = '<div class="fb-page"
+		$htmlmarkup = '<div class="fb-page"
 		data-href="'.$href.'"
 		data-width="'.$width.'"
 		data-height="'.$height.'"
@@ -46,6 +71,6 @@ class ModFacebookpageHelper {
 			</blockquote>
 		</div>';
 
-        return $fbpageredered;
-    }
+        return $htmlmarkup;
+	}
 }
