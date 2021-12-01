@@ -19,10 +19,11 @@
         <filename>tmpl/index.html</filename>
 	</files>
 
-	<config>
-	</config>
-	
-	    <config>
+	<updateservers>
+		<server type="extension" name="Facebook Page Module" priority="1">https://raw.githubusercontent.com/t0m0094/joomla_packageupdate/main/j3-mod_facebookpage.xml</server>
+	</updateservers>
+
+    <config>
 		<fields name="params">
 			<fieldset name="basic">
 				<field name="href" type="text" default="https://www.facebook.com/facebook" label="URL" description="The URL of the Facebook Page" />
